@@ -1,0 +1,256 @@
+---
+title: "Fixed and Random Effects Models"
+subtitle: "How should we pool effect sizes in meta-analysis?"
+author: "Jason Moggridge"
+author-meta: "LTRI @ Mt. Sinai"
+format: 
+  revealjs:
+    auto-stretch: false
+    incremental: false
+    theme: 'simple'
+    pointer:
+      pointerSize: 24
+      alwaysVisible: false
+revealjs-plugins:
+  - pointer
+backgroundcolor: '#f5fafe'
+date: '2024-07-30'
+---
+
+# Meta-analysis Recap
+
+## Meta-analysis Research
+
+
+- To estimate the true effect size from multiple studies: 
+<br>
+
+  - define research question (PICOT)
+  - collect results from appropriate studies
+  - apply statistical model*
+
+--------------------------------------------------------------------
+
+## Meta-analysis Data
+
+- unit of observation is the study; dataset is $K$ studies
+- variables:
+  - estimated effect size ($\widehat{\theta}_{k}$)
+  - standard error ($\epsilon_{k}$)
+  - sample size ($N_{k}$)
+
+<!-- theta_ is *some measure of relationship between two variables -->
+
+--------------------------------------------------------------------
+
+## How should we pool effect sizes?
+
+- How do we estimate what the *true effect* is?
+- How should we weigh estimates?
+
+--------------------------------------------------------------------
+
+## Meta-analysis Models
+
+- **Fixed effects** and **random effects** models make different assumptions about how data are generated.
+- The chosen model should be appropriate for the underlying processes
+
+<!-- --------------------------------------------------------------- -->
+
+# Fixed Effects Model
+
+--------------------------------------------------------------------
+
+## Fixed Effects Assumption
+
+- One true effect size ($\theta_{\ F }$)
+- Deviation from true effect is due to sampling error only
+<!-- - common or equal effect -->
+
+![](img/fixed.jpg){height=450px fig-align='center'}    
+
+- One true effect size that exists for the population
+- Errors are just due to random sampling (noise).
+
+--------------------------------------------------------------------
+
+## Fixed Effects Model
+
+<br>
+
+- Sampling error $\epsilon_{\ k }$ is represented by the std. error $SE_{k}$
+- SE is inversely related to sample size $N_{k}$.
+- $\widehat{\theta}_{k}$ with small SE should be closer to true $\theta$
+- These $\widehat{\theta}_{k}$ should be given more weight
+
+
+--------------------------------------------------------------------
+
+## Inverse-Variance Weighting
+
+<br>
+
+ Study weight $w_{k}$ is inversely related to $SE^2$ 
+
+$$
+w_{k}=\frac{1}{SE^{2}_{k}}
+$$
+
+The pooled estimate $\widehat{\theta}$ is the weighted average:
+
+$$
+ \widehat{\theta} = \frac{\Sigma_{k=1}^{K}  \widehat{\theta}_{k} w_{k}}{\Sigma_{k=1}^{K} w_{k}}
+$$
+
+## Fixed Effects Model Interpretation
+
+- Assumes all studies are sampling a completely homogenous population and measurement is performed in exactly the same manner.
+- Model doesn't allow between-study heterogeneity
+- Too simplistic to account for real differences between studies in the underlying true effect.
+
+<!-- -------------------------------------------------------------------- -->
+
+# Random Effects Model
+
+--------------------------------------------------------------------
+
+## Random Effects Assumption
+
+- There are are universe of possible studies, 
+- Each study is different with it's own true effect size 
+- Studies are randomly drawn from a distribution with mean true effect size $\mu$
+
+--------------------------------------------------------------------
+
+## Random Effects Model
+
+A study's effect size is an estimate of the true study effect size plus sampling error
+$$
+ \widehat{\theta}_{k}=\theta_{k} +\epsilon_{k}
+$$
+
+The true effect size of study k is drawn from a distribution of effect sizes with mean $\mu$, with error $\zeta_{k}$.
+
+$$
+{\theta}_{k}=\mu+\zeta_{k}
+$$
+
+## Random Effects Model
+
+- REM as a hierarchical structure
+
+![](img/rand_eff.jpg){width=100% fig-align='center'}
+
+--------------------------------------------------------------------
+
+## REM weighting
+
+-  we must first establish the variance of the distribution of true effect sizes, $\tau^2$ 
+- this value informs the between-study heterogeneity for weighting studies
+
+$$
+w^{*}_{k}=\frac{1}{s^{2}_{k} + \tau^2}
+$$
+
+
+And then we estimate the overall mean effect size using the same weighted average as before.
+
+--------------------------------------------------------------------
+
+## Estimating $\tau^2$
+
+- Many procedures exist, all of which are far too complicated for this talk!
+- The DerSimonian and Laird method is one of the oldest and very common
+
+<!-- :::{info} -->
+<!-- Random effects models aren't feasible without computers! -->
+<!-- ::: -->
+
+--------------------------------------------------------------------
+
+## Exchangeability Assumption
+
+- $\zeta_{k}$ is independent of $k$
+- there is no way to know what $\zeta_{k}$ is *a priori*, ie. without looking at the data
+- we say that different studies are assumed to be 'exchangeable' because we have no way to know $\zeta_{k}$
+- *This assumption may not be true...*
+
+--------------------------------------------------------------------
+
+## Should we just always use the REM?
+
+<br>
+
+- Only choose the FEM if you have clear reason to (rare)
+
+- For most scenarios, use the REM.
+
+--------------------------------------------------------------------
+
+## A Test for Between-Study Heterogeneity
+
+<br>
+
+A simple way to determine whether the REM is appropriate is to test whether the confidenece interval for $\tau^2$ includes zero or not.
+
+
+--------------------------------------------------------------------
+
+## References & Further Reading
+
+[Cochrane Handbook for Systematic Reviews of Interventions](https://training.cochrane.org/handbook/current/chapter-10)  
+
+[Doing Meta-Analysis in R: A Hands-On Guide]()
+
+[Why I don’t use the term “fixed and random effects”](https://statmodeling.stat.columbia.edu/2005/01/25/why_i_dont_use/) 
+  
+[Stats, Stat!: Meta-analysis](https://www.youtube.com/watch?v=rg0L3Ridriw&list=PLI8Ak-hj5dgEovGlan5oBZiyWx1sLqpMt)
+
+[An Introduction to Systematic Review and Meta-analysis: Everything you need to know in 59 minutes](https://www.youtube.com/watch?v=aG7jvwDNXtk)
+
+<!-- -------------------------------------------------------------------- -->
+
+<!-- ## Statistical Terminology Is Awful -->
+
+<!-- <br> -->
+
+<!-- - contradict standard english (*significance*) -->
+<!-- - jargon (*heteroskedasticity*) -->
+<!-- - often ambiguous (*fixed & random effects*) -->
+
+<!-- -------------------------------------------------------------------- -->
+
+<!-- ## Five Definitions of Random Effects -->
+
+<!-- <br> -->
+
+<!--  - Fixed effects are constant across individuals, and random effects vary. -->
+<!--  - Effects are fixed if they are interesting in themselves or random if there is interest in the underlying population.  -->
+<!--  - When a sample exhausts the population, the corresponding variable is fixed; when the sample is a small (negligible) part of the population the corresponding variable is random. -->
+
+<!-- -------------------------------------------------------------------- -->
+
+<!-- ## Five Definitions of Random Effects (con't) -->
+
+<!-- <br> -->
+
+<!-- - If an effect is assumed to be a realized value of a random variable, it is called a random effect. -->
+<!-- - Fixed effects are estimated using maximum likelihood and random effects are estimated with shrinkage. -->
+
+
+<!-- -------------------------------------------------------------------- -->
+
+<!-- ## Disclaimer: "Fixed vs. Random Effects" -->
+
+<!-- - **No formal definition exists.** -->
+<!-- - 5+ definitions exist for "random effects"... -->
+<!-- - Communicate how analysis was performed: share code & data. -->
+
+<!-- -------------------------------------------------------------------- -->
+
+<!-- ## Fixed vs Random Effects in Meta-analysis -->
+
+<!-- > Fixed effects are constant across individuals, and random effects vary. -->
+
+<!--  - use the first definition of random effects...  -->
+
