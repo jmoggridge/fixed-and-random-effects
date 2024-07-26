@@ -72,7 +72,7 @@ date: '2024-07-30'
 - Deviation from true effect is due to sampling error only
 <!-- - common or equal effect -->
 
-![](img/fixed.jpg){height=450px fig-align='center'}    
+![](img/fixed_effects.jpg){height=450px fig-align='center'}    
 
 - One true effect size that exists for the population
 - Errors are just due to random sampling (noise).
