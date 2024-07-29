@@ -1,0 +1,242 @@
+---
+title: "Fixed and Random Effects Models"
+title-slide-attributes:
+  data-background-image: ./img/logos.jpg
+  data-background-size: contain
+  data-background-opacity: "1"
+subtitle: "How should we pool effect sizes in meta-analysis?"
+author: "Jason Moggridge"
+author-meta: "LTRI @ Mt. Sinai"
+format: 
+  revealjs:
+    embed-resources: true
+    auto-stretch: false
+    incremental: false
+    theme: 'simple'
+    pointer:
+      pointerSize: 24
+      alwaysVisible: false
+revealjs-plugins:
+  - pointer
+backgroundcolor: '#f5fafe'
+date: '2024-07-30'
+---
+
+## About Me
+
+Jason Moggridge
+
+::::{.columns}
+:::{.column}
+
+- Master of Bioinformatics, U of Guelph
+- Bachelor of Science - Biochemistry, Carleton 
+- I work mostly on data analysis, software tools, and web development
+- Interested in biology, computer science, statistics
+- Spend my free time outside
+:::
+
+::: {.column}
+![]()
+:::
+::::
+
+# Meta-analysis Recap
+
+## Meta-analysis Research
+
+- **Goal**: Estimate the true effect size from multiple studies   
+- **Steps**:
+  - define research question (PICOT)
+  - collect results from appropriate studies
+  - apply statistical model*
+
+--------------------------------------------------------------------
+
+## Meta-analysis Data
+
+- dataset is $K$ studies
+- each independent study is an observation
+- variables:
+  - estimated effect size ($\widehat{\theta}_{k}$)
+  - standard error ($\epsilon_{k}$ or $SE_{k}$)
+  - sample size ($N_{k}$)
+
+--------------------------------------------------------------------
+
+## How should we pool effect sizes?
+
+<br>
+To get our meta-analysis result, we need to take a **weighted average of effect sizes**...
+
+<br>
+But how should we weigh the evidence of each study?
+
+--------------------------------------------------------------------
+
+## Meta-analysis Models
+
+- **Fixed effects** and **random effects** models make different assumptions about how data were generated
+- Model should approximate the underlying processes
+
+<!-- ---------------------------------------------------------- -->
+
+# Fixed Effects Model
+
+--------------------------------------------------------------------
+
+## Fixed Effects Assumption
+
+- One true effect size ($\theta_{\ F }$)
+- Deviation from $\theta_{\ F}$ is due to sampling error ($\epsilon_{\ k}$)
+
+![](img/fe.jpg){height=450px fig-align='center'}    
+
+--------------------------------------------------------------------
+
+## Inverse-Variance Weighting
+
+<br>
+
+- Error ($\epsilon_{\ k }$) is inversely proportional to sample size $N_{k}$.
+- Estimates ($\widehat{\theta}_{k}$) with small $\epsilon_{\ k }$ should be closer to true $\theta$
+- These $\widehat{\theta}_{k}$ should be given more weight for estimating $\theta$
+
+
+--------------------------------------------------------------------
+
+## Inverse-Variance Weighting
+
+<br>
+
+ Study weight $w_{k}$ is inversely related to the variance ($SE^2_{k}$)
+
+$$
+w_{k}=\frac{1}{(SE)^{2}_{k}}
+$$
+
+The pooled estimate $\widehat{\theta}$ is the weighted average:
+
+$$
+ \widehat{\theta} = \frac{\Sigma_{k=1}^{K}  \widehat{\theta}_{k} w_{k}}{\Sigma_{k=1}^{K} w_{k}}
+$$
+
+## FEM Assumptions & Interpretation
+
+- All studies are sampling a completely homogeneous population
+- All studies performed in exactly the same manner.
+- No between-study heterogeneity
+- Too simplistic to account for differences between studies.
+
+
+<!-- --------------------------------------------------------- -->
+
+# Random Effects Model
+
+--------------------------------------------------------------------
+
+## Random Effects Assumption
+
+- There are are universe of possible studies, 
+- Each study has it's own true effect size ($\theta_k$)
+- $\theta_{k}$ are randomly drawn from a distribution with mean true effect size $\mu$ and variance ($\tau^2$)
+
+![](./img/mu_and_tau.jpg)
+
+--------------------------------------------------------------------
+
+## Random Effects Model
+
+A study's effect size is an estimate of the true study effect size plus sampling error.
+
+$$
+ \widehat{\theta}_{k}=\theta_{k} +\epsilon_{k}
+$$
+
+The true effect size of study $k$ is drawn from a distribution of effect sizes with mean $\mu$, with error $\zeta_{k}$.
+
+$$
+{\theta}_{k}=\mu+\zeta_{k}
+$$
+
+## Random Effects Model
+
+- REM as a hierarchical structure
+
+![](img/rand_eff.jpg){width=100% fig-align='center'}
+
+--------------------------------------------------------------------
+
+## REM weighting
+
+-  we must first establish the variance of the distribution of true effect sizes, $\tau^2$ 
+- between-study heterogeneity ($\tau^2$) increases the relative weight given to smaller studies (larger SE)
+
+$$
+w^{*}_{k}=\frac{1}{SE^{2}_{k} + \tau^2}
+$$
+
+
+Then compute the weighted average in the usual fashion.
+
+--------------------------------------------------------------------
+
+## Estimating $\tau^2$
+
+- Many procedures exist, all of which are far too complicated for this talk!
+- The DerSimonian and Laird method is one of the oldest and very common
+
+<!-- :::{info} -->
+<!-- Random effects models aren't feasible without computers! -->
+<!-- ::: -->
+
+--------------------------------------------------------------------
+
+## Exchangeability Assumption
+
+- $\zeta_{k}$ is independent of $k$
+- there is no way to know what $\zeta_{k}$ is *a priori*, ie. without looking at the data
+- we say that different studies are assumed to be 'exchangeable' because we have no way to know $\zeta_{k}$
+- *This assumption may not be true...*
+
+--------------------------------------------------------------------
+
+## Should we just always use the REM?
+
+<br>
+
+- Only choose the FEM if you have clear reason to (rare)
+
+- For most scenarios, use the REM.
+
+--------------------------------------------------------------------
+
+## A Test for Between-Study Heterogeneity
+
+<br>
+
+- does the confidence interval for $\tau^2$ include zero or not?
+- if not, using REM is justified
+
+
+--------------------------------------------------------------------
+
+## References & Further Reading
+
+- [Cochrane Handbook for Systematic Reviews of Interventions](https://training.cochrane.org/handbook/current/chapter-10)  
+
+- [Doing Meta-Analysis in R: A Hands-On Guide](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/)
+
+- [Why I don’t use the term “fixed and random effects”](https://statmodeling.stat.columbia.edu/2005/01/25/why_i_dont_use/) 
+  
+- [Stats, Stat!: Meta-analysis](https://www.youtube.com/watch?v=rg0L3Ridriw&list=PLI8Ak-hj5dgEovGlan5oBZiyWx1sLqpMt)
+
+- [An Introduction to Systematic Review and Meta-analysis: Everything you need to know in 59 minutes](https://www.youtube.com/watch?v=aG7jvwDNXtk)
+
+--------------------------------------------------------------------
+
+## Questions
+
+![]()
+
+
