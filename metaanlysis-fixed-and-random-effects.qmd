@@ -196,7 +196,8 @@ And then we estimate the overall mean effect size using the same weighted averag
 
 <br>
 
-A simple way to determine whether the REM is appropriate is to test whether the confidenece interval for $\tau^2$ includes zero or not.
+- does the confidence interval for $\tau^2$ include zero or not?
+- if not, using REM is justified
 
 
 --------------------------------------------------------------------
@@ -212,50 +213,4 @@ A simple way to determine whether the REM is appropriate is to test whether the 
 - [Stats, Stat!: Meta-analysis](https://www.youtube.com/watch?v=rg0L3Ridriw&list=PLI8Ak-hj5dgEovGlan5oBZiyWx1sLqpMt)
 
 - [An Introduction to Systematic Review and Meta-analysis: Everything you need to know in 59 minutes](https://www.youtube.com/watch?v=aG7jvwDNXtk)
-
-<!-- -------------------------------------------------------------------- -->
-
-<!-- ## Statistical Terminology Is Awful -->
-
-<!-- <br> -->
-
-<!-- - contradict standard english (*significance*) -->
-<!-- - jargon (*heteroskedasticity*) -->
-<!-- - often ambiguous (*fixed & random effects*) -->
-
-<!-- -------------------------------------------------------------------- -->
-
-<!-- ## Five Definitions of Random Effects -->
-
-<!-- <br> -->
-
-<!--  - Fixed effects are constant across individuals, and random effects vary. -->
-<!--  - Effects are fixed if they are interesting in themselves or random if there is interest in the underlying population.  -->
-<!--  - When a sample exhausts the population, the corresponding variable is fixed; when the sample is a small (negligible) part of the population the corresponding variable is random. -->
-
-<!-- -------------------------------------------------------------------- -->
-
-<!-- ## Five Definitions of Random Effects (con't) -->
-
-<!-- <br> -->
-
-<!-- - If an effect is assumed to be a realized value of a random variable, it is called a random effect. -->
-<!-- - Fixed effects are estimated using maximum likelihood and random effects are estimated with shrinkage. -->
-
-
-<!-- -------------------------------------------------------------------- -->
-
-<!-- ## Disclaimer: "Fixed vs. Random Effects" -->
-
-<!-- - **No formal definition exists.** -->
-<!-- - 5+ definitions exist for "random effects"... -->
-<!-- - Communicate how analysis was performed: share code & data. -->
-
-<!-- -------------------------------------------------------------------- -->
-
-<!-- ## Fixed vs Random Effects in Meta-analysis -->
-
-<!-- > Fixed effects are constant across individuals, and random effects vary. -->
-
-<!--  - use the first definition of random effects...  -->
 
