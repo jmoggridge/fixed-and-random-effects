@@ -34,8 +34,9 @@ transition-speed: 'default'
 
 - M. Bioinformatics, U of Guelph
 - B.Sc. Biochem, Carleton 
-- Day to day: data analysis, software, and web dev
-- Interests: bio, comp-sci, stats & ML
+- Day to day: 
+ - data analysis, software, and web dev
+- Interested in: bio, comp-sci, stats & ML
 - Outdoors: kayak, hike, dive, bike...
 
 :::
@@ -113,7 +114,7 @@ But *how* should we weigh the evidence of each study?
 
 <br>
 
-- Error ($\epsilon_{\ k }$) is inversely proportional to sample size $N_{k}$.
+- Error ($\epsilon_{\ k }$) is inversely proportional to sample size $n_{k}$.
 - Estimates ($\widehat{\theta}_{k}$) with small $\epsilon_{\ k }$ should be closer to true $\theta$
 - These $\widehat{\theta}_{k}$ should be given more weight for estimating $\theta$
 
@@ -133,7 +134,7 @@ $$
 The pooled estimate $\widehat{\theta}$ is the weighted average:
 
 $$
- \widehat{\theta} = \frac{\Sigma\ \widehat{\theta}_{k} w_{k}}{\Sigma\  w_{k}}
+ \widehat{\theta} = \frac{\Sigma^K_{k=1}\widehat{\theta}_{k} w_{k}}{\Sigma^K_{k=1}w_{k}}
 $$
 
 --------------------------------------------------------------------
@@ -143,7 +144,7 @@ $$
 To compute the standard error on our averaged result $\widehat\theta$
 
 $$
-SE(\widehat{\theta}) = \frac{1}{\Sigma\ w}
+SE(\widehat{\theta}) = \frac{1}{\Sigma^K_{k=1}w_{k}}
 $$
 
 
@@ -154,14 +155,14 @@ $$
 :::{.incremental}
 
 - All studies are sampling a completely homogeneous population
-- All studies performed in exactly the same manner.
+- All studies performed in exactly the same manner
 - No between-study heterogeneity
+:::
 
 . . . 
 
 Too simplistic to account for differences between studies.
 
-:::
 
 <!-- --------------------------------------------------------- -->
 
@@ -229,8 +230,7 @@ Then compute the weighted average in the usual fashion.
 
 ## Exchangeability Assumption
 
-- $\zeta_{k}$ is independent of $k$
-- there is no way to know what $\zeta_{k}$ is *a priori*
+- There is no way to know what $\zeta_{k}$ is *a priori*
 - This assumption may be violated by hidden information, e.g., publication bias
 
 --------------------------------------------------------------------
@@ -239,8 +239,8 @@ Then compute the weighted average in the usual fashion.
 
 <br>
 
+- For most scenarios in biology, medicine, psych., ... use the REM.
 - Only choose the FEM if you have clear reason to (rare)
-- For most scenarios, use the REM.
 
 --------------------------------------------------------------------
 
@@ -248,8 +248,8 @@ Then compute the weighted average in the usual fashion.
 
 <br>
 
-- does the confidence interval for $\tau^2$ include zero or not?
-- if not, using REM is justified
+- Does the confidence interval for $\tau^2$ include zero or not?
+- If not, using REM is justified
 
 
 --------------------------------------------------------------------
