@@ -23,6 +23,9 @@ date: '2024-07-30'
 transition: 'fade'
 transition-speed: 'default'
 ---
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
 --------------------------------------------------------------------
 
@@ -32,12 +35,24 @@ transition-speed: 'default'
 ::::{.columns}
 :::{.column width=60%}
 
-- M. Bioinformatics, U of Guelph
-- B.Sc. Biochem, Carleton 
-- Day to day: 
- - data analysis, software, and web dev
-- Interested in: bio, comp-sci, stats & ML
-- Outdoors: kayak, hike, dive, bike...
+[{{< bi envelope-at >}} ja.moggridge @ gmail](https://github.com/jmoggridge)
+
+[{{< bi github >}} jmoggridge](https://github.com/jmoggridge)
+
+[{{< bi mastodon >}} vis.social/@jmoggridge](https://vis.social/@jmoggridge)
+
+
+*Education*:   
+- M Bioinformatics, U of Guelph  
+- BSc Biochem, Carleton U 
+
+*Work*: Data analysis, software, and web dev  
+
+*Interests*: bio, comp-sci, stats & ML
+
+*Fun*: outdoor sports & naturalism
+
+
 
 :::
 
