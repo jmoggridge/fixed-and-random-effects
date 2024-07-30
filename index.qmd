@@ -20,11 +20,13 @@ revealjs-plugins:
   - pointer
 backgroundcolor: '#f5fafe'
 date: '2024-07-30'
+transition: 'fade'
+transition-speed: 'default'
 ---
 
 --------------------------------------------------------------------
 
-## About Me
+## About Me {transition="fade"}
 
 <!-- :::::{.incremental} -->
 ::::{.columns}
@@ -32,62 +34,73 @@ date: '2024-07-30'
 
 - M. Bioinformatics, U of Guelph
 - B.Sc. Biochem, Carleton 
-- Does: data analysis, software, and web dev
-- Interests: mol bio, comp sci, stats/ML
-- Outdoorsy
+- Day to day: data analysis, software, and web dev
+- Interests: bio, comp-sci, stats & ML
+- Outdoors: kayak, hike, dive, bike...
+
 :::
 
 ::: {.column width="40%"}
-![Harbour seal (*Phoca vitulina*) at Ruckle Provincial Park. ](./img/seal.jpg){fig-align='right' }    
+![Harbour seal (*Phoca vitulina*) at Ruckle park. ](./img/seal.jpg){fig-align='right' }    
 :::
 ::::
 <!-- ::::: -->
 
-# Meta-analysis Recap
+# Meta-analysis Recap {transition="fade-in slide-out"}
 
-## Meta-analysis Research
+## Meta-analysis Recap
 
+::::{.incremental}
 - **Goal**: Estimate the true effect size from multiple studies   
+
+:::{.incremental transition="slide-in" transition-speed="fast"}
 - **Steps**:
   - define research question (PICOT)
   - collect results from appropriate studies
   - apply statistical model*
 
+:::
+::::
+
 --------------------------------------------------------------------
 
-## Meta-analysis Data
+## Meta-analysis Data {transition="slide-in slide-out"}
 
+:::{.incremental}
 - dataset is $K$ studies
-- each independent study is an observation
-- variables:
-  - estimated effect size ($\widehat{\theta}_{k}$)
-  - standard error ($\epsilon_{k}$ or $SE_{k}$)
-  - sample size ($N_{k}$)
+- each independent study is an observation with variables:
+  - estimated effect size ($\widehat{\theta}_{k}$)  
+  - standard error ($\epsilon_{k}$ or $SE_{k}$)  
+  - sample size ($n_{k}$)   
+
+:::
 
 --------------------------------------------------------------------
 
-## How should we pool effect sizes?
+## How should we pool effect sizes? {transition="slide-in fade-out"}
 
 <br>
 To get our meta-analysis result, we need to take a **weighted average of effect sizes**...
 
+. . . 
+
 <br>
-But how should we weigh the evidence of each study?
+But *how* should we weigh the evidence of each study?
 
 --------------------------------------------------------------------
 
-## Meta-analysis Models
+## Meta-analysis Models {transition="fade-in slide-out"}
 
 - **Fixed effects** and **random effects** models make different assumptions about how data were generated
 - Model should approximate the underlying processes
 
 <!-- ---------------------------------------------------------- -->
 
-# Fixed Effects Model
+# Fixed Effects Model {transition="slide-in slide-out"}
 
 --------------------------------------------------------------------
 
-## Fixed Effects Assumption
+## Fixed Effects Assumption {transition="fade"}
 
 - One true effect size ($\theta_{\ F }$)
 - Deviation from $\theta_{\ F}$ is due to sampling error ($\epsilon_{\ k}$)
@@ -136,17 +149,23 @@ $$
 
 --------------------------------------------------------------------
 
-## FEM Assumptions & Interpretation
+## FEM Assumptions & Interpretation 
+
+:::{.incremental}
 
 - All studies are sampling a completely homogeneous population
 - All studies performed in exactly the same manner.
 - No between-study heterogeneity
-- Too simplistic to account for differences between studies.
 
+. . . 
+
+Too simplistic to account for differences between studies.
+
+:::
 
 <!-- --------------------------------------------------------- -->
 
-# Random Effects Model
+# Random Effects Model {transition="fade-in slide-out"}
 
 --------------------------------------------------------------------
 
@@ -187,13 +206,14 @@ $$
 
 ## REM weighting
 
-- uses the between-study heterogeneity of true effect sizes, $\tau^2$
-- $\tau^2$ increases the relative weight given to smaller studies (larger SE)
+- uses the between-study heterogeneity of true effects, $\tau^2$
+- $\tau^2$ increases the relative weight given to smaller studies
 
 $$
 w^{*}_{k}=\frac{1}{SE^{2}_{k} + \tau^2}
 $$
 
+. . .
 
 Then compute the weighted average in the usual fashion.
 
@@ -211,7 +231,7 @@ Then compute the weighted average in the usual fashion.
 
 - $\zeta_{k}$ is independent of $k$
 - there is no way to know what $\zeta_{k}$ is *a priori*
-- This assumption may be violated by, e.g., biases in small studies
+- This assumption may be violated by hidden information, e.g., publication bias
 
 --------------------------------------------------------------------
 
@@ -249,10 +269,9 @@ Then compute the weighted average in the usual fashion.
 - [An Introduction to Systematic Review and Meta-analysis: Everything you need to know in 59 minutes](https://www.youtube.com/watch?v=aG7jvwDNXtk)
 
 
-<!-- -------------------------------------------------------------------- -->
 --------------------------------------------------------------------
 
-## Questions?
+## Questions? {transition="fade-in slide-out"}
 
 <br>
 <br>
