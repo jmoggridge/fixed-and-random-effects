@@ -5,8 +5,7 @@ title-slide-attributes:
   data-background-size: contain
   data-background-opacity: "1"
 subtitle: "How should we pool effect sizes in meta-analysis?"
-author: "Jason Moggridge"
-author-meta: "LTRI @ Mt. Sinai"
+author: "Jason Moggridge, LTRI"
 format: 
   revealjs:
     embed-resources: true
