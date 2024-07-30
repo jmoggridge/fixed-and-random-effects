@@ -22,24 +22,26 @@ backgroundcolor: '#f5fafe'
 date: '2024-07-30'
 ---
 
+--------------------------------------------------------------------
+
 ## About Me
 
-Jason Moggridge
-
+<!-- :::::{.incremental} -->
 ::::{.columns}
-:::{.column}
+:::{.column width=60%}
 
-- Master of Bioinformatics, U of Guelph
-- Bachelor of Science - Biochemistry, Carleton 
-- I work mostly on data analysis, software tools, and web development
-- Interested in biology, computer science, statistics
-- Spend my free time outside
+- M. Bioinformatics, U of Guelph
+- B.Sc. Biochem, Carleton 
+- Does: data analysis, software, and web dev
+- Interests: mol bio, comp sci, stats/ML
+- Outdoorsy
 :::
 
-::: {.column}
-![]()
+::: {.column width="40%"}
+![Harbour seal (*Phoca vitulina*) at Ruckle Provincial Park. ](./img/seal.jpg){fig-align='right' }    
 :::
 ::::
+<!-- ::::: -->
 
 # Meta-analysis Recap
 
@@ -90,7 +92,7 @@ But how should we weigh the evidence of each study?
 - One true effect size ($\theta_{\ F }$)
 - Deviation from $\theta_{\ F}$ is due to sampling error ($\epsilon_{\ k}$)
 
-![](img/fe.jpg){height=450px fig-align='center'}    
+![](img/fixed-effects.jpg){height=450px fig-align='center'}    
 
 --------------------------------------------------------------------
 
@@ -121,6 +123,19 @@ $$
  \widehat{\theta} = \frac{\Sigma_{k=1}^{K}  \widehat{\theta}_{k} w_{k}}{\Sigma_{k=1}^{K} w_{k}}
 $$
 
+--------------------------------------------------------------------
+
+## FEM Standard Error
+
+To compute the standard error on our averaged result $\widehat\theta$
+
+$$
+SE_{k} = \frac{1}{\Sigma(w)}
+$$
+
+
+--------------------------------------------------------------------
+
 ## FEM Assumptions & Interpretation
 
 - All studies are sampling a completely homogeneous population
@@ -137,23 +152,23 @@ $$
 
 ## Random Effects Assumption
 
-- There are are universe of possible studies, 
-- Each study has it's own true effect size ($\theta_k$)
+- A universe of possible studies
+- Each study has own true effect size ($\theta_k$)
 - $\theta_{k}$ are randomly drawn from a distribution with mean true effect size $\mu$ and variance ($\tau^2$)
 
-![](./img/mu_and_tau.jpg)
+![](./img/mu_and_tau.jpg){height=300px fig-align='center'}
 
 --------------------------------------------------------------------
 
 ## Random Effects Model
 
-A study's effect size is an estimate of the true study effect size plus sampling error.
+A study's effect size ($\widehat{\theta}_{k}$) is an estimate of the true study effect size ($\theta_{k}$) plus sampling error ($\epsilon_{k}$).
 
 $$
  \widehat{\theta}_{k}=\theta_{k} +\epsilon_{k}
 $$
 
-The true effect size of study $k$ is drawn from a distribution of effect sizes with mean $\mu$, with error $\zeta_{k}$.
+The true effect size of study $k$ ($\theta_{k}$) is drawn from a distribution with mean $\mu$ and has the **new error term** $\zeta_{k}$.
 
 $$
 {\theta}_{k}=\mu+\zeta_{k}
@@ -195,8 +210,7 @@ Then compute the weighted average in the usual fashion.
 ## Exchangeability Assumption
 
 - $\zeta_{k}$ is independent of $k$
-- there is no way to know what $\zeta_{k}$ is *a priori*, ie. without looking at the data
-- we say that different studies are assumed to be 'exchangeable' because we have no way to know $\zeta_{k}$
+- there is no way to know what $\zeta_{k}$ is *a priori*
 - *This assumption may not be true...*
 
 --------------------------------------------------------------------
@@ -235,8 +249,10 @@ Then compute the weighted average in the usual fashion.
 
 --------------------------------------------------------------------
 
-## Questions
+## Questions?
 
-![]()
+<br>
 
-
+:::{.info}
+My slides are online here: https://jmoggridge.github.io/fixed-and-random-effects
+:::
